@@ -1,14 +1,12 @@
 ---
 layout: post
-title: Data cleaning and transformation in Python
+title: "Data cleaning and transformation in Python: analyze LinkedIn Job Postings"
 categories: [Data Cleaning, Data Manipulation, Data Tranformation]
 excerpt: In graphic design, a pull quote (also known as a lift-out pull quote) is a key phrase, quotation, or excerpt that has been pulled from an article and used as a page layout graphic element, serving to entice readers into the article or to highlight a key topic.
 ---
 
-In graphic design, a pull quote (also known as a lift-out pull quote) is a key phrase, quotation, or excerpt that has been pulled from an article and used as a page layout graphic element, serving to entice readers into the article or to highlight a key topic. {% include pullquote.html quote="It is typically placed in a larger or distinctive typeface and on the same page." %} Pull quotes are often used in magazine and newspaper articles, annual reports, and brochures, as well as on the web. They can add visual interest to text-heavy pages with few images or illustrations.
+Data cleaning and transformation is usually the first step in the data analysis process. For each project's specific purpose, we might find data from multiple different data sources, in different formats, and need to be combined and cleaned so that later when we are analyzing, we have high quality data that is necessary for a good outcome.
 
-Placement of a pull quote on a page may be defined in a publication's or website's style guide. Such a typographic device may or may not be aligned with a column on the page. Some designers, for example, choose not to align the quote. In that case, the quotation cuts into two or more columns, as in the example shown. Because the pull quote invites the reader to read about the highlighted material, the pull quote should appear before the text it cites and, generally, fairly close to it.
+Since real life data are so messy, usually the data preparation steps are also different. In this blog, we look at a specific application: analyzing LinkedIn job postings, especially jobs related to Data/AI. We'll look at the data cleaning and transformations we need to do, and in future blogs conduct further analysis. The jupyter notebook for this is [available on google colab](https://colab.research.google.com/drive/1X-l681ONO4KBlak7Pf4-JfGUloOP1549?usp=sharing). Feel free to make a copy, download the data, and poke around the code.
 
-Pull quotes need not be a verbatim copy of the text being quoted; depending on a publication's house style, pull quotes may be abbreviated for space or paraphrased for clarity, with or without indication.
-
-A disadvantage of pull quotes as a design element is that they can disrupt the reading process of readers invested in reading the text sequentially by drawing attention to ghost fragments out of context. At the other extreme, when pull quotes are used to break up what would otherwise be a formless wall of text, pull quote can serve as visual landmarks to help the reader maintain a sense of sequence and place.
+Now let's look at the data sources we got.
