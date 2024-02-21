@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pan-fry Cabbage Recipe"
-categories: [Data Cleaning, Data Manipulation, Data Tranformation]
+categories: [Cooking, Recipe]
 excerpt: My signiture Chinese pan-fry cabbage recipe.
 ---
 
