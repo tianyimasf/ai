@@ -2,7 +2,7 @@
 layout: post
 title: "Data cleaning and transformation in Python: analyze LinkedIn Job Postings"
 categories: [Data Cleaning, Data Manipulation, Data Tranformation]
-excerpt: cleaning and transformation is usually the first step in the data analysis process. For each project's specific purpose, we might find data from multiple different data sources, in different formats, and need to be combined and cleaned so that later when we are analyzing, we have high quality data that is necessary for a good outcome.
+excerpt: Data cleaning and transformation is usually the first step in the data analysis process. For each project's specific purpose, we might find data from multiple different data sources, in different formats, and need to be combined and cleaned so that later when we are analyzing, we have high quality data that is necessary for a good outcome.
 ---
 
 Data cleaning and transformation is usually the first step in the data analysis process. For each project's specific purpose, we might find data from multiple different data sources, in different formats, and need to be combined and cleaned so that later when we are analyzing, we have high quality data that is necessary for a good outcome.
