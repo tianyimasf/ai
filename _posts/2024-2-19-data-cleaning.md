@@ -7,7 +7,7 @@ excerpt: Data cleaning and transformation is usually the first step in the data 
 
 Data cleaning and transformation is usually the first step in the data analysis process. For each project's specific purpose, we might find data from multiple different data sources, in different formats, and need to be combined and cleaned so that later when we are analyzing, we have high quality data that is necessary for a good outcome.
 
-Since real life data are so messy, the data preparation steps are usually different from project to project. In this blog, we look at a specific application: analyzing LinkedIn job postings, especially jobs related to Data/AI. We'll look at the data cleaning and transformations we need to do, and in future blogs talks about further analysis. [The google colab for this is here](https://colab.research.google.com/drive/1X-l681ONO4KBlak7Pf4-JfGUloOP1549?usp=sharing). Feel free to make a copy, download the data, and play around with the code.
+Since real life data are so messy, the data preparation steps are usually different from project to project. In this blog, we look at a specific application: analyzing LinkedIn job postings, especially jobs related to Data/AI. We'll look at the data cleaning and transformations we need to do, and in future blogs talks about further analysis. [The google colab for this is here](https://colab.research.google.com/drive/1NFOz6OVS6FrEI8tcUWvCryCyvXE352jg?usp=sharing). Feel free to make a copy, download the data, and play around with the code.
 
 The notebook contains everything in this blog.
 
@@ -190,9 +190,190 @@ We get `(17439, 2)`, 17.5k rows of data points in total for csv files (remember 
 
 We can shuffle rows of data and check out different job titles and their descriptions.
 
-By sampling with `frac=1`, you are basically resampling the whole dataset. Then we use `reset_index()` and setting `drop=True` to prevents `.reset_index` from creating a column containing the old index entries.
+By sampling with `frac=1`, you are basically resampling the whole dataset. Then we use `reset_index()` and setting `drop=True` to prevent `.reset_index` from creating a column containing the old index entries.
 
 ```python
 df = df.sample(frac=1).reset_index(drop=True)
 df.head()
 ```
+
+We have finished processing csv files, so we save the dataframe to a csv file. Next, we're going to load and process a JSON file.
+
+```python
+df.to_csv("data\\df.csv", index=False)
+```
+
+## Load and Process a JSON file
+
+Remember we have a JSON file with path 'data\\techmap-jobs_us_2023-05-05.json'. Let's load and process it.
+
+Usually the workflow goes like this: you first read the file using a built in function `open()`, save it to a variable `f`, and then use `json.load(f)` to load the JSON file.
+
+Here, that is not possible since our JSON file is ~4GB large. There seem to be a lot of ways to approarch this, but the simplest way I've found is to use pandas' `read_json` with specifying `chunksize=10000` or something so that we get a dataframe of 10000 rows in memory to process everytime.
+
+Here, we first use `chunksize=1000` to take a look and confirm it does what it's suppose to do.
+
+```python
+import json
+
+chunks = pd.read_json('data\\techmap-jobs_us_2023-05-05.json', lines=True, chunksize = 1000)
+
+for chunk in chunks:
+    print(chunk)
+    break
+```
+
+It's working! The code is only suppose to print the first chunk, but if you don't reload the json file and keep printing "the first chunk", it actually iterate through the list, so you'll acually get the next chunk.
+
+Because we already know the column names for title and description, we just specify them manually after creating a function for this specific JSON file.
+
+```python
+def get_relevent_jobs_for_json(df):
+
+    # Get relevant column names
+    title_column_name = "name"
+    desc_column_name = "text"
+
+    # Get tech job listings
+    df_filtered = df.loc[df[title_column_name].apply(is_tech_job)]
+
+    # Get only the title and description columns and standardize column naming
+    columns_renamed = {title_column_name: "title", desc_column_name: "description"}
+    df_new = df_filtered[[title_column_name, desc_column_name]]
+    df_new.columns = ["title", "description"]
+
+    return df_new
+```
+
+Then, we reload the json file again in `chunksize=10000`. We check the initial dataframe's shape again to see how many rows we have initially, iterate through chunks to get tech jobs, print how many we get each time, and at last print the final number of jobs we have. Because of the size, this might take awhile.
+
+Disappointingly this JSON file didn't give us a lot to work with. It's probably because it scraped general market. At least we have 19k rows to work with now. Let's save that dataframe again to a csv file.
+
+```python
+chunks = pd.read_json('data\\techmap-jobs_us_2023-05-05.json', lines=True, chunksize = 10000)
+df = pd.read_csv("data\\df.csv")
+print("Base shape: ", df.shape)
+
+for chunk in chunks:
+    df_p = get_relevent_jobs_for_json(chunk)
+    print(df_p.shape)
+    df = pd.concat([df, df_p], axis=0)
+
+print("Final shape: ", df.shape)
+```
+
+    Base shape:  (17439, 2)
+    (421, 2)
+    (438, 2)
+    (737, 2)
+    (138, 2)
+    Final shape:  (19173, 2)
+
+```python
+df.to_csv("data\\df.csv", index=False)
+```
+
+```python
+df = df.sample(frac=1).reset_index(drop=True)
+df.head()
+```
+
+# Cleaning and Transform the Data
+
+Phew!!! That was a lot. Finally we have a csv file with all of our tech job titles and descriptions. We're not done yet. I still want to clean the text of the descriptions and hopefully seperate the company summary, job requirements, and benefits sections. Let's see how we can do this.
+
+## Text Cleaning
+
+In this section we'll apply text cleaning to the dataset. Specifically, we'll:
+
+1. Remove null values and duplicates.
+
+2. Remove empty strings, urls, emails, and remove any formatting.
+
+3. Remove strings with only punctuations and numbers.
+
+4. Filter only English postings.
+
+In that order. To get to strings with only punctuations and numbers, we need to remove all other values first.
+
+Remove null values and duplicates:
+
+```python
+df = pd.read_csv('data\\df.csv')
+df.shape
+```
+
+    (19173, 2)
+
+Here we use pandas' direct methods `dropna()` and `drop_duplicates()` to achieve this. By specifying the column name like `subset=['<column_name>']`, you only look at duplicates in that column.
+
+On the other hand, dropping null values like that will drop any row that has a null value in each of the fields, which is what we want here.
+
+```python
+df = df.dropna()
+df = df.drop_duplicates(subset=['description'])
+df.shape
+```
+
+    (14412, 2)
+
+Now we define 3 custom methods to achive 2 - 3. We use regex to match and substitute strings, and use `apply` and check functions to filter out invalid strings.
+
+```python
+def is_empty_str(s):
+    b = [c == " " for c in list(s)]
+    return all(b)
+```
+
+```python
+import re
+import string
+
+def clean_str(s):
+    new_str = re.sub(r'http\S+', '', s) # remove urls
+    new_str = re.sub(r'\S*@\S*\s?', '', new_str) # remove emails
+    new_str = new_str.replace("\n", ' ')
+    new_str = ''.join(s for s in new_str if ord(s)>31 and ord(s)<126) # remove any formatting
+    return new_str
+```
+
+```python
+def is_only_punc_dig(s):
+    return all(c.isdigit() or c in string.punctuation or c == ' ' for c in s)
+```
+
+```python
+df = df.loc[df["description"].apply(is_empty_str) == False]
+df["description"] = df["description"].apply(clean_str)
+df = df.loc[df["description"].apply(is_only_punc_dig) == False]
+df.shape
+```
+
+    (14409, 2)
+
+In the end, we get 14.4k data points(descriptions).
+
+Finally, we filter out only English postings using an external library called `langdetect`. This might take awhile.
+
+First we use `pip install` to install the package since it's not usual for machines to have it already installed. We use the exclaimation mark so that the notebook knows to execute the code after as if it's in the terminal.
+
+```python
+!pip install langdetect
+```
+
+```python
+from langdetect import detect
+
+df = df.loc[df["description"].apply(detect) == 'en']
+df.shape
+```
+
+    (14388, 2)
+
+This will be our final dataset.
+
+```python
+df.to_csv("data\\df.csv", index=False)
+```
+
+This marks the end of the data preparation phase. Ideally we want to separate company profile, job requirements, and benefit sections in each job description. Since we only care about the job requirements for analyzing top skills, company profile for application areas, and benefit for salary. But in reality that requires much more than simple data transforming and cleaning techniques and we probably need ML/AI techniques. Thus we look at that in the next tutorial about this particular application.
