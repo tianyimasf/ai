@@ -4,9 +4,11 @@ title: About
 permalink: /about/
 ---
 
-I'm Alex(Tianyi), a master student at CU Boulder studying applied math. I have 5 years of AI research experience at two great US universities, my alma mater University of Rochester, and my current school CU Boulder. I have 1.5 years of software engineer/ML experience at Scale AI, a Forbes Top 50 AI startup with 600 employees and 600M+ funding.
+I'm Tianyi(you can call me Alex.) I'm going to be a master student at CU Boulder studying applied math this fall. I have a few years of natural language processing and combinatorics research experience. I've worked a year as a software engineer at a startip at the bay area after graduating from uni.
 
-I like learning about recent AI developments, working on projects valuable to others, and writing about the technologies I work with. I spend my free time with my partner and friends playing video games.
+I'm passionate about research in the areas of natural language processing and social computing, as well as climate tech. I'm just starting my climate journey and am a Climatebase fellow at Climatebase Fellowship Q1 2024. I also like writing personal and technical blogs about my thoughts and projects.
+
+I like listening to musics and messing with makeups and different fashion choices. Lastly, I spend my free time with my partner and friends playing video games.
 
 Hope you find something interesting here.
 
