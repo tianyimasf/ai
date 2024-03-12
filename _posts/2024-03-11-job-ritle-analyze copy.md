@@ -15,7 +15,7 @@ We follow the follow steps:
 
 3. Get specialized Analyst and Data Engineer jobs and visualize.
 
-[The google colab for this is here.](https://colab.research.google.com/drive/1GlTFGd0Wik-d3SK7GYYXgiK0hEtFO5r8?usp=sharing) Feel free to make a copy, download the data, and play around with the code.
+[The google colab for this is here.](https://colab.research.google.com/drive/1OovEFLlNDSBTG7_k0H93E_AiqHtnETIY?usp=sharing) Feel free to make a copy, download the data, and play around with the code.
 
 The method we uses to get those job titles will follow a simple pattern: define key words and match titles. It's straightforward, so we'll only give an example here, and move on to the visualizations.
 
