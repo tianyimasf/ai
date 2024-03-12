@@ -5,7 +5,7 @@ categories: [Text Analytics, Data Visualization]
 excerpt: This post follows our first post analyzing LinkedIn data job market by first cleaning and process the job postings. Before any analysis on the postings are conducted, it's helpful to analyze the trends in job titles first. In this blog, we try to analyze major demanded job titles and create some visualizations to tell stories about what we've found.
 ---
 
-This post follows our first post analyzing LinkedIn data job market by first cleaning and process the job postings. Before any analysis on the postings are conducted, it's helpful to analyze the trends in job titles first. In this blog, we try to analyze major demanded job titles and create some visualizations to tell stories about what we've found.
+This post follows my first post analyzing LinkedIn data job market by first cleaning and process the job postings. Before any analysis on the postings are conducted, it's helpful to analyze the trends in job titles first. In this blog, we try to analyze major demanded job titles and create some visualizations to tell stories about what we've found.
 
 We follow the follow steps:
 
@@ -15,7 +15,7 @@ We follow the follow steps:
 
 3. Get specialized Analyst and Data Engineer jobs and visualize.
 
-[The google colab for this is here](https://colab.research.google.com/drive/1GlTFGd0Wik-d3SK7GYYXgiK0hEtFO5r8?usp=sharing). Feel free to make a copy, download the data, and play around with the code.
+[The google colab for this is here.](https://colab.research.google.com/drive/1GlTFGd0Wik-d3SK7GYYXgiK0hEtFO5r8?usp=sharing) Feel free to make a copy, download the data, and play around with the code.
 
 The method we uses to get those job titles will follow a simple pattern: define key words and match titles. It's straightforward, so we'll only give an example here, and move on to the visualizations.
 
@@ -38,7 +38,7 @@ def get_tuple(title, title_words, ranked_list):
 
 We filter `ranked_list` iteratively by matching words in `title_words` one by one. And then we adds up all matching title counts and use `title` as an umbrella title for all matching titles.
 
-Another version of this later is much longer than this one but not much more complicated. The alteration is to add a `negatives` argument, and delete those "negative words" from the title to see if the title only consists of negative words. Here, negative words could be "data", and "junior". So if we want specialized analyst titles, then we want to filter for titles with the word "analyst", but also words other than just "data" or "junior" in the title. So we would add "data" and "junior" as "negative words".
+Another version of this later in the notebook is much longer than this one but not much more complicated. The alteration is to add a `negatives` argument, and delete those "negative words" from the title to see if the title only consists of negative words. Here, negative words could be "data", and "junior". So if we want specialized analyst titles, then we want to filter for titles with the word "analyst", but also words other than just "data" or "junior" in the title. So we would add "data" and "junior" as "negative words".
 
 With the data we have, I created the following visualizations. The first one paint the picture of trends in major data job titles, like the number of seniority positions, and comparisons between different titles. Here are the graphs:
 
