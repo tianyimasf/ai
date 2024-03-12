@@ -10,7 +10,7 @@ I'm passionate about research in the areas of natural language processing and so
 
 Hobbies: listening to musics and messing with makeups and different fashion choices. Finding different ways to use my creative energy.
 
-In my free time I play video games with my partner and friends.
+I also play video games with my partner and friends.
 
 Hope you find something interesting here.
 
