@@ -13,3 +13,15 @@ excerpt: "Basic Concepts of Probability: definition, sample space, anxioms, inde
 
 - **Sample space**: The set of all possible outcomes of an experiment, denoted by $S$.
 
+- **Element/Sample Point**: Each outcome in a sample space.
+
+- **Discrete sample space**: A sample space that contains either a finite or a countable number of distinct sample points.
+
+- **Event**: A subset of a sample space.
+
+---
+
+## Questions
+
+1. What is the definition of a continuous sample space, according to the handhout?
+
