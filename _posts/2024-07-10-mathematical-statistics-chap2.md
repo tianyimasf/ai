@@ -75,7 +75,7 @@ P(A) is the sum of the probabilities of the inidividual outcomes in A.
 
 - If A and B are events in a sample space S and P(A) $\neq$ 0, then $P(A \cap B) = P(B) \times P(A \mid B) = P(A) \times P(B \mid A)$.
 
-- Events A and B are independent if and only if $P(A \cap B) = P(A)P(B) \Leftrightarrow P(A \mid B) = P(A) \Leftrightarrow P(B \mid A) = P(B)$.
+- Events A and B are **independent** if and only if $P(A \cap B) = P(A)P(B) \Leftrightarrow P(A \mid B) = P(A) \Leftrightarrow P(B \mid A) = P(B)$.
 
 - **The rule of total probability**: If the events $B_1$, $B_2$, ..., and $B_k$ constitute a partition of the sample space S and $P(B_i) \neq 0$, for i = 1, 2, ..., k, then for any event A in S: $P(A) = \sum_{i=1}^{k}P(B_i)P(A \mid B_i)$.
 
