@@ -11,8 +11,9 @@
           "a11y/accessibility-menu.js"
         ],
         tex2jax: {
-          inlineMath: [['$', '$']],
-          displayMath: [['$$', '$$']]
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\[','\]'] ],
+          processEscapes: true
         },
         jax: ["input/TeX", "output/CommonHTML"],
         TeX: {
