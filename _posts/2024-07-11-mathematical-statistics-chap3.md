@@ -5,6 +5,8 @@ categories: [Mathematics, Statistics, Lecture Notes]
 excerpt: "Random Variables, Probability Distributions, Continuous Random Variables, Probability Density Functions, Multivariate Distributions, Marginal Distributions, Conditional Distributions, The Theory in Practice"
 ---
 
+Note: (*) means that bullet point is not mentioned in class but in handout.
+
 # Discrete Random Variable
 
 - X is a **random variable** if: S is a sample space with a probability measure and X is a **real-valued function** defined over the elements of S.
@@ -45,4 +47,44 @@ excerpt: "Random Variables, Probability Distributions, Continuous Random Variabl
 
 - **Theorem 3.6**: Given f(x) and F(x) for a continuous random variable X, then $$P(a \leq X \leq b) = F(b) - F(a)$$ for any real number a, b with $a \leq b$ and $f(x) = \frac{dF(x)}{dx} = F'(x)$ where F is differentiable.
 
-# Multivariate Distributions
+# Multivariate Distributions: Discrete Random Variable
+
+- The **joint probability distribution** of discrete random variables X and Y, is: $f(x, y) = P(X = x, Y = y)$ for each pair of values $(x, y)$ within the range of X and Y.
+
+- **Rules of joint probability distributions**:
+    1. $f(x, y) \geq 0$ for each pair of values (x, y) within its domain,
+    2. $\sum_{x} \sum_{y} f(x, y) = 1$, double summations extends over all pairs $(x, y) \in D$.
+
+- **The joint distribution function**, or the **joint cumulative distribution** of **discrete** random variables X and Y is given by $F(x, y) = P(X \leq x, Y \leq y) = \sum_{s \leq x} \sum_{t \leq y} f(s, t) \text{ for } -\infty < x < \infty, -\infty < y < \infty$.
+
+# Multivariate Distributions: Continuous Random Variable
+
+- **A joint probability density function** (or, **joint p.d.f.**) of the **continuous** random variables X and Y, is: a bivariate function with values f(x, y) defined over the xy-plane, such that $P[(X, Y) \in A] = \int \int_{A} f(x, y)dxdy$ for any area A in the xy-plane.
+
+- **Rules of p.d.f.**:
+    1. $f(x, y) \geq 0 \text{ for } -\infty < x < \infty, -\infty < y < \infty$,
+    2. $\int \int_{R^2}f(x, y)dA = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x, y)dxdy = 1$.
+
+- **The joint distribution function** or **the joint cumulative distribution** of **continuous** random variables X and Y, is: $F(x, y) = P(X \leq x, Y \leq y) = \int_{-\infty}^{x} \int_{-\infty}^{y} f(s, t)dsdt \text{ for } -\infty < x < \infty \text{, } -\infty < y < \infty$.
+
+- $f(x, y) = \frac{\partial^2}{\partial{x}\partial{y}}F(x, y)$
+
+- (*)**Trivariate, ..., multivariate** case: $F(x_1, x_2, ..., x_n) = P(X_1 \leq x_1, X_2 \leq x_2, ... X_n \leq x_n) = \int_{-\infty}^{x_n} ... \int_{-\infty}^{x_2} \int_{-\infty}^{x_1}f(t_1, t_2, ..., t_n)dt_1dt_2...dt_n$, $-\infty < x_i < \infty$, $i = 1, 2, ..., n$, $f(t_1, t_2, ..., t_n) = P(X_1 = x_1, X_2 = x_2, ... X_n = x_n) = \frac{\partial^n}{\partial{x_1} \partial{x_2} ...\partial{x_3}}F(x_1, x_2, ..., x_n)$.
+
+# Marginal Distribution
+
+- Given **discrete** random variables X, Y with joint probability function f(x, y) at x, y, the **marginal distribution of X** is: $g(x) = \sum_{y}f(x, y)$ for each x within the range of X, 
+
+the **marginal distribution of Y** is: $h(y) = \sum_{x}f(x, y)$ for each y within the range of Y.
+
+- Given **continuous** random variables X, Y with joint probability function f(x, y) at x, y, the **marginal density of X** is: $g(x)=\int_{-\infty}^{\infty}f(x,y)dy \text{ for } -\infty < x < \infty$
+
+the **marginal density of Y** is: $h(y) = \int_{-\infty}^{\infty}f(x,y)dx \text{ for } -\infty < y < \infty$.
+
+- **Joint marginal distributions**
+    - **Discrete**: 
+        - $X_1$'s marginal distribution: $g(x_1) = \sum_{x_2}...\sum_{x_n}f(x_1, x_2, ..., x_n)$.
+        - $X_1, X_2, X_3$'s marginal distribution: $m(x_1, x_2, x_3) = \sum_{x_4}...\sum_{x_n}f(x_1, x_2, ..., x_n)$.
+    - **Continuous**:
+        - $X_2$'s marginal distribution: $h(x_2) = \inf_{-\infty}^{\infty}...\inf_{-\infty}^{\infty}f(x_1, x_3, ..., x_n)dx_1dx_3...dx_n$.
+        - $X_1, X_n$'s marginal distribution: $\phi(x_1, x_n) = \inf_{-\infty}^{\infty}...\inf_{-\infty}^{\infty}f(x_2, x_3, ..., x_{n-1})dx_2dx_3...dx_{n-1}$.
