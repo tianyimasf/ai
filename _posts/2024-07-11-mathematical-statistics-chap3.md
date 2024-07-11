@@ -86,5 +86,5 @@ the **marginal density of Y** is: $h(y) = \int_{-\infty}^{\infty}f(x,y)dx \text{
         - $X_1$'s marginal distribution: $g(x_1) = \sum_{x_2}...\sum_{x_n}f(x_1, x_2, ..., x_n)$.
         - $X_1, X_2, X_3$'s marginal distribution: $m(x_1, x_2, x_3) = \sum_{x_4}...\sum_{x_n}f(x_1, x_2, ..., x_n)$.
     - **Continuous**:
-        - $X_2$'s marginal distribution: $h(x_2) = \inf_{-\infty}^{\infty}...\inf_{-\infty}^{\infty}f(x_1, x_3, ..., x_n)dx_1dx_3...dx_n$.
-        - $X_1, X_n$'s marginal distribution: $\phi(x_1, x_n) = \inf_{-\infty}^{\infty}...\inf_{-\infty}^{\infty}f(x_2, x_3, ..., x_{n-1})dx_2dx_3...dx_{n-1}$.
+        - $X_2$'s marginal distribution: $h(x_2) = \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty}f(x_1, x_3, ..., x_n)dx_1dx_3...dx_n$.
+        - $X_1, X_n$'s marginal distribution: $\phi(x_1, x_n) = \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty}f(x_2, x_3, ..., x_{n-1})dx_2dx_3...dx_{n-1}$.
