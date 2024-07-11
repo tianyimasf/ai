@@ -71,7 +71,7 @@ Note: (*) means that bullet point is not mentioned in class but in handout.
 
 - (*)**Trivariate, ..., multivariate** case: $F(x_1, x_2, ..., x_n) = P(X_1 \leq x_1, X_2 \leq x_2, ... X_n \leq x_n) = \int_{-\infty}^{x_n} ... \int_{-\infty}^{x_2} \int_{-\infty}^{x_1}f(t_1, t_2, ..., t_n)dt_1dt_2...dt_n$, $-\infty < x_i < \infty$, $i = 1, 2, ..., n$, $f(t_1, t_2, ..., t_n) = P(X_1 = x_1, X_2 = x_2, ... X_n = x_n) = \frac{\partial^n}{\partial{x_1} \partial{x_2} ...\partial{x_3}}F(x_1, x_2, ..., x_n)$.
 
-# Marginal Distribution
+# Marginal Distributions
 
 - Given **discrete** random variables X, Y with joint probability function f(x, y) at x, y, the **marginal distribution of X** is: $g(x) = \sum_{y}f(x, y)$ for each x within the range of X, 
 
@@ -88,3 +88,23 @@ the **marginal density of Y** is: $h(y) = \int_{-\infty}^{\infty}f(x,y)dx \text{
     - **Continuous**:
         - $X_2$'s marginal distribution: $h(x_2) = \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty}f(x_1, x_3, ..., x_n)dx_1dx_3...dx_n$.
         - $X_1, X_n$'s marginal distribution: $\phi(x_1, x_n) = \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty}f(x_2, x_3, ..., x_{n-1})dx_2dx_3...dx_{n-1}$.
+
+# Conditional Distributions
+
+- The **conditional distribution** of X given Y = y, **discrete** randome variables X and Y with f(x, y) the joint probability distribution, h(y) the marginal distribution of Y at y: $f(x \mid y) = \frac{f(x, y)}{h(y)}$, $h(y) \neq 0$ for each x within the range of X.
+
+- The **conditional distribution** of Y given X = x, **discrete** randome variables X and Y, g(x) the marginal distribution of X at x: $w(y \mid x) = \frac{f(x, y)}{g(x)}$, $g(x) \neq 0$ for each y within the range of Y.
+
+- The **conditional density** of X given Y = y, **continuous** randome variables X and Y with f(x, y) the joint probability distribution, h(y) the marginal distribution of Y at y: $f(x \mid y) = \frac{f(x, y)}{h(y)}$, $h(y) \neq 0$ for $-\infty < x < \infty$.
+
+- The **conditional density** of Y given X = x, **continuous** randome variables X and Y, g(x) the marginal distribution of X at x: $w(y \mid x) = \frac{f(x, y)}{g(x)}$, $g(x) \neq 0$ for $-\infty < y < \infty$.
+
+- Reasoning behind the definitions:
+    - We have the definition of conditional probability of event A given event B: $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$. Let A be $X = x$ and B be $Y = y$, then $P(X = x \mid Y = y) = \frac{P(X = x, Y = y)}{P(Y = y)} = \frac{f(x, y)}{h(y)}$, given $h(y) \neq 0$.
+
+- Conditional distributions/densities with **multiple variables**:
+    - Given **four discrete random variables**, the conditional distribution of $X_3$ at $x_3$ given $X_1 = x_1, X_2 = x_2, X_4 = x_4$ is: $p(x_3 \mid x_1, x_2, x_3) = \frac{f(x_1, x_2, x_3, x_4)}{g(x_1, x_2, x_4)}$, $g(x_1, x_2, x_4) \neq 0$ where $g(x_1, x_2, x_4)$ is the joint marginal distribution of $X_1, X_2, X_4$.
+    - The **joint conditional distribution** of $X_2, X_4$ at $(x_2, x_4)$ is: $p(x_2, x_4 \mid x_1, x_3) = \frac{f(x_1, x_2, x_3, x_4)}{m(x_1, x_3)}$, $m(x_1, x_3) \neq 0$.
+    - The **joint conditional distribution** of $X_2, X_3, X_4$ at $(x_2, x_3, x_4)$ is: $p(x_2, x_3, x_4 \mid x_1) = \frac{f(x_1, x_2, x_3, x_4)}{b(x_1)}$, $b(x_1) \neq 0$.
+
+- n **discrete** random variables are **independent** if and only if $f(x_1, x_2, ..., x_n) = f_1(x_1) \cdot f_2(x_2) ... \cdot f_ n(x_n)$ for all $(x_1, x_2, ..., x_n)$ within range where $f_i(x_i)$ is the **marginal distribution** function of $X_i$ at $x_i$.
