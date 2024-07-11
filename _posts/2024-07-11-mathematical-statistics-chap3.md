@@ -14,3 +14,9 @@ excerpt: "Random Variables, Probability Distributions, Continuous Random Variabl
 - **X = x** is the set of elements in the sample space for which the random variable X has value x.
 
 - The **probability distribution** of a **discrete** random variable X, or **probability mass function**, or **p.m.f.** of X, is: the function given by $f(x) = P(X = x)$ for each x within the range of X.
+
+- **Rules** of probability distribution fuctions:
+    1. $f(x) \geq 0$ for each value within its domain.
+    2. $\sum_{x}f(x) = 1$ for $x \in D$.
+
+- The **distribution function**, or the **cumulative distribution**, of a discrete random variable X, or **cumulative distribution function**, or **c.d.f.**: the function given by $$F(x) = P(X \leq x) = \sum_{t \leq x}f(t) \text{ for } -\infty < x < \infty$$, where $f(t)$ is the value of the probability distribution of X at t.
