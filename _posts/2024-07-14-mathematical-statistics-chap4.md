@@ -116,3 +116,24 @@ Given $\mu$ and $\sigma$ the mean and standard deviation of X, for any positive 
 - Independence implies zero covariance but not the other way around.
 
 - **Theorem 4.13**: If $X_1, X_2, ..., X_n$ are independent, then $E(X_1, X_2, ..., X_n) = E(X_1) \cdot E(X_2) \cdot ... \cdot E(X_n)$.
+
+# Moments of Linear Combination of Random Variables
+
+- If Y is **a linear combination of** $X_1, X_2, ..., X_n$ are random variables and $Y = \sum_{i = n}^{n}a_iX_i$, where $a_1, a_2, ..., a_n$ are constants, then \[E(Y) = \sum_{i=1}^{n}a_iE(X_i) \text{, } var(Y) = \sum_{i=1}^{n}a_i^2var(X_i) + 2\sum\sum_{i<j} a_ia_j \cdot cov(X_i, X_j)\] where $1 < i, j < 1$.
+
+- If $X_1, X_2, ..., X_n$ are **independent** and $Y = \sum_{i = n}^{n}a_iX_i$, where $a_1, a_2, ..., a_n$ are constants, then $var(Y) = \sum_{i=1}^{n}a_i^2var(X_i)$
+    - **Reason**: $X_1, X_2, ..., X_n$ independent $\Leftrightarrow$ $cov(X_i, X_j) = 0$.
+
+- The **covariance of $Y_1$, $Y_2$**, if $X_1, X_2, ..., X_n$ are random variables and $Y_1 = \sum_{i = n}^{n}a_iX_i$, $Y_2 = \sum_{i = n}^{n}b_iX_i$ where $a_1, a_2, ..., a_n$, $b_1, b_2, ..., b_n$ are constants, then: ![cov eq](../images/eq.png)
+
+- The **covariance of $Y_1$, $Y_2$**, if $X_1, X_2, ..., X_n$ are **independent** random variables and $Y_1 = \sum_{i = n}^{n}a_iX_i$, $Y_2 = \sum_{i = n}^{n}b_iX_i$ where $a_1, a_2, ..., a_n$, $b_1, b_2, ..., b_n$ are constants, then \[cov(Y_1, Y_2) = \sum_{i=1}^{n}a_ib_i\cdot var(X_i)\]
+
+# Conditional Expectations
+
+- The **conditional expectation** of $\mu(X)$ given $Y = y$, $f(x \mid y)$ is the value of the conditional probability distirbution of X given $Y = y$ at x, is:
+    - $E[\mu(X) \mid X = y] = \sum_x \mu(X) \cdot f(x \mid y)$ for **discrete** random variable X,
+    - $E[\mu(X) \mid X = y] = \int_{-\infty}^{\infty} \mu(X) \cdot f(x \mid y)dx$ for **continuous** random variable X.
+
+- The **conditional mean** of $\mu(X)$ given $Y = y$ is $E[\mu(X) \mid X = y]$ if we let $\mu(X) = X$, denoted by $\mu_{X \mid Y} = E(X \mid Y)$.
+
+- The **conditional variance** of $\mu(X)$ given $Y = y$ is: \[Var(X \mid Y = y) = E((X - E(X \mid Y = y))^2 \mid Y = y) = E(X^2 \mid Y = y) - E(X \mid X = x)^2\]
