@@ -7,6 +7,8 @@ excerpt: "Introduction, The Discrete Uniform Distribution, The Bernoulli Distrib
 
 Note: (*) means that bullet point is not mentioned in class but in handout.
 
+# Common Distributions
+
 - A **discrete uniform distribution** of a random variable X, which is referred to a discrete uniform random variable if and only if its probability distribution is: \[f(x) = \frac{1}{k} \text{ for } x = x_1, x_2, ..., x_k \text{, where } x_i \neq x_j \text{, when } i \neq j\]
 
 - $\mu = \sum_{i = 1}^k x_i \cdot \frac{1}{k}$
@@ -97,3 +99,33 @@ Note: (*) means that bullet point is not mentioned in class but in handout.
 
 - In general, the Poisson gives a good approximation to binomial probabilities when $n \leq 20$, and $\theta \leq 0.05$. 
     - When $n \leq 100, n\theta < 10$, the approximation is generally excellant.
+
+- **Mean** of **Poisson distribution**: $\mu = \lambda$, **variance** of **Poisson distribution**: $\sigma^2 = \lambda$.
+    - Proof: from binomial distribuion's mean and variance, we know:
+    - $\mu = n\theta = \lambda$; $\sigma^2 = n\theta(1 - \theta) = \lambda(1 - \theta)$ which approaches $\lambda$ as $\theta \rightarrow 0$
+
+- **Theorem 5.9**: the moment-generating function of the Poisson distribution is given by $M_X(t) = e^{\lambda(e^t - 1)}$.
+
+- The Poisson distribution can serve as a model for the number of successes that occur during a given time interval or in a specified region when
+    1. The numbers of successes occurring in nonoverlapping time intervals or regions are independent,
+    2. The probability of a single success occurring in a very short time interval or in a very small region is proportional to the length of the time interval or the size of the region, and
+    3. the probability of more than one success occurring in such a short time interval or falling in such a small region is negligible.
+    - Hence, a Poisson distribution might describe the number of telephone calls per hour received by an office, the number of typing errors per page, or the number of bacteria in a given culture when the average number of successes, λ, for the given time interval or specified region is known.
+
+# The Multinomial Distribution
+
+- A **multinomial distribution** of a random variable X which would be referred to as a multinomial random variable if and only if \[f(x_1, x_2, ..., x_k; n, \theta_1, \theta_2, ..., \theta_k) = {n \choose x_1, x_2, ..., x_k} \cdot \theta_1^{x_1} \cdot \theta_2^{x_2}\cdot ... \cdot \theta_k^{x_k} \] for $x_i = 1, 2, ..., n$, for each i, where $\sum_{i=1}^kx_i = n$, and $\sum_{i=1}^k\theta_i = 1$ 
+
+- This distribution indicates that there are k possible outcomes for an experiments and their associated possibility $\theta_i$ for $i = 1, 2, ..., k$. 
+    - When n trials are conducted, we have $x_1, x_2, ..., x_k$ where $x_i$ is the number of outcome i. 
+    - Thus for a given set of $x_i$' s, the definition of the possibility of the outcome follows. 
+    - It follows that binomial distribution is a special case of multinomial distribution when k = 2.
+
+# The Multivariate Hypergeometric Distribution
+
+- **Setup**
+    - We are picking n elements from a set of N elements **without replacement** where
+    - There are $M_1$ elements for the first kind of elements, $M_2$ for the second kind, etc., and $M_k$ for the k-th kind;
+    - We picked $x_1$ elements from the set of first kind of elements $M_1$, $x_2$ from the set of second kind of elements $M_2$, etc., and $x_k$ from the set of k-th kind of elements $M_k$;
+
+- - A **multivariate hypergeometric distribution** of a random variable X which would be referred to as a multivariate hypergeometric random variable if and only if: \[f(x_1, x_2, ..., x_k; n, M_1, M_2, ..., M_k) = \frac{ {M_1 \choose x_1} {M_2 \choose x_2} ... {M_k \choose x_k} }{ {N \choose n} }\] for $x_i = 0, 1, 2, ..., n$ and $x_i \leq M_i$ for each i, where $\sum_{i=1}^kx_i = n$, and $\sum_{i=1}^kM_i = N$.
