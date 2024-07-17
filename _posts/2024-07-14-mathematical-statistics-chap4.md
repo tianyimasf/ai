@@ -49,8 +49,8 @@ Note: (*) means that bullet point is not mentioned in class but in handout.
 - When **r = 1**, $\mu_1' = E(X^1) = E(X) = \mu$.
 
 - The **r-th moment** about the **mean** of a random variable X, $\mu_r$, is the expected value of $(X - \mu)^r$
-    - X is **discrete**: $\mu_r' = E((X - \mu)^r) = \sum_{x}(x - \mu)^r \cdot f(x)$ for $r = 0, 1, 2, ...$.
-    - X is **continuous**: $\mu_r' = E((X - \mu)^r) = \int_{-\infty}^{\infty}(x - \mu)^r \cdot f(x)dx$.
+    - X is **discrete**: $\mu_r = E((X - \mu)^r) = \sum_{x}(x - \mu)^r \cdot f(x)$ for $r = 0, 1, 2, ...$.
+    - X is **continuous**: $\mu_r = E((X - \mu)^r) = \int_{-\infty}^{\infty}(x - \mu)^r \cdot f(x)dx$.
 
 - When **r = 0**, $\mu_0 = E[X^0] = E(1) = 1$.
 
