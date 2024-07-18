@@ -58,7 +58,7 @@ Note: (*) means that bullet point is not mentioned in class but in handout.
 
 - **Reason for the name**: the name derives from the fact that the values of the probability distribution are the terms of binomial expansion of $(\frac{1}{\theta} - \frac{1 - \theta}{\theta})^{-k}$ (notice it's the fraction to the power of **negative** k).
 
-- **Theorem 5.5**: $b^*(x; k, \theta) = \frac{k}{x}\cdot b(x; k, \theta)$.
+- **Theorem 5.5**: $b^*(x; k, \theta) = \frac{k}{x}\cdot b(k; x, \theta)$.
 
 - **Mean** of **negative binomial distribution**: $\mu = \frac{k}{\theta}$.
 
