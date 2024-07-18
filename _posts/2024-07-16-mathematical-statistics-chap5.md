@@ -97,7 +97,7 @@ Note: (*) means that bullet point is not mentioned in class but in handout.
 
 - The Poisson distribution gives the probability of an event happening a certain number of times($\lambda$) within a given number of trials (n).
 
-- In general, the Poisson gives a good approximation to binomial probabilities when $n \leq 20$, and $\theta \leq 0.05$. 
+- In general, the Poisson gives a good approximation to binomial probabilities when $n \geq 20$, and $\theta \leq 0.05$. 
     - When $n \leq 100, n\theta < 10$, the approximation is generally excellant.
 
 - **Mean** of **Poisson distribution**: $\mu = \lambda$, **variance** of **Poisson distribution**: $\sigma^2 = \lambda$.
